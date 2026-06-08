@@ -5,7 +5,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: ['http://localhost:3000', 'http://localhost:3002'],
+    origin: [
+      'http://localhost:3000',
+      'https://fuliza-app-seven.vercel.app',
+      'https://fuliza-app.vercel.app',
+      /\.vercel\.app$/,
+    ],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
@@ -13,8 +18,5 @@ async function bootstrap() {
   const port = process.env.PORT || 3001;
   await app.listen(port);
   console.log(`Fuliza Backend running on http://localhost:${port}`);
-  console.log(`M-Pesa STK Push:  POST http://localhost:${port}/mpesa/stk-push`);
-  console.log(`Payment Status:   GET  http://localhost:${port}/mpesa/status/:id`);
-  console.log(`M-Pesa Callback:  POST http://localhost:${port}/mpesa/callback`);
 }
 bootstrap();
