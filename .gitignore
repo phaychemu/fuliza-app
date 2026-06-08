@@ -1,0 +1,13 @@
+node_modules/
+*/node_modules/
+**/node_modules/
+.env
+*/.env
+**/.env
+dist/
+build/
+*/dist/
+*/build/
+fuliza-app/
+.DS_Store
+*.log
